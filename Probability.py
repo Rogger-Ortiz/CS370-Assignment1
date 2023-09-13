@@ -18,13 +18,16 @@ for i in range(0, 10000):
     num = np.random.normal(loc=7.25, scale=0.875)
     gs.append(halfround(num))
 
-# 1b) We have three variables, ak, pp, and ptime. Write the code for generating these variables from Multivate Gaussian distribution and replicate the associated plots.
+# 1b) We have three variables, ak, pp, and ptime. Write the code for generating these variables from Multivariate Gaussian distribution and replicate the associated plots.
 ak = []
 pp = []
 ptime = []
 
+U = [[1.0, 0.6, -0.9],
+     [0.6, 1.0, -0.5],
+     [-0.9, -0.5, 1.0]]
 
-# 1c) Perform the probability inrtegral transform and replicate the associated plots.
+# 1c) Perform the probability integral transform and replicate the associated plots.
 # 1d) Perform the inverse transform sampling.
 # 1e) Replicate the final plot showcasing the correlations between the variables.
 
