@@ -1,5 +1,6 @@
 import pandas as pd
 import scipy as sc
+from scipy import stats
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -39,10 +40,8 @@ axis[1, 2].plot(APT[:, 2], APT[:, 1])
 axis[2, 2].set_title("ptime")
 
 plt.show()
->>>>>>> 5691336c792ce29e9268e2b1ca18748843094c07
 
 # 1c) Perform the probability integral transform and replicate the associated plots.
-
 APT = sc.stats.norm.cdf(APT)
 
 figure, axis = plt.subplots(3, 3)
@@ -61,6 +60,14 @@ axis[2, 2].set_title("ptime")
 plt.show()
 
 # 1d) Perform the inverse transform sampling.
+ak = sc.stats.poisson.rvs(U[:,0], 5)
+plt.hist(ak)
+plt.show()
+pp = sc.stats.poisson.rvs(U[:,1], 15)
+plt.hist(pp)
+plt.show()
+#ptime = sc.stats.
+
 # 1e) Replicate the final plot showcasing the correlations between the variables.
 
 
