@@ -27,6 +27,9 @@ U = [[1.0, 0.6, -0.9],
      [0.6, 1.0, -0.5],
      [-0.9, -0.5, 1.0]]
 
+APT = np.random.multivariate_normal(mean=[0,0,0], cov=U)
+print(APT)
+
 # 1c) Perform the probability integral transform and replicate the associated plots.
 # 1d) Perform the inverse transform sampling.
 # 1e) Replicate the final plot showcasing the correlations between the variables.
