@@ -20,9 +20,9 @@ for i in range(0, 10000):
     gs.append(halfround(num))
 
 # 1b) We have three variables, ak, pp, and ptime. Write the code for generating these variables from Multivariate Gaussian distribution and replicate the associated plots.
-U = [[1.0, 0.6, -0.9],
-     [0.6, 1.0, -0.5],
-     [-0.9, -0.5, 1.0]]
+U = np.array([[1.0, 0.6, -0.9],
+              [0.6, 1.0, -0.5],
+              [-0.9, -0.5, 1.0]])
 
 APT = np.random.multivariate_normal(mean=(0, 0, 0), cov=U, size=10000)
 
@@ -60,13 +60,9 @@ axis[2, 2].set_title("ptime")
 plt.show()
 
 # 1d) Perform the inverse transform sampling.
-ak = sc.stats.poisson.rvs(U[:,0], 5)
-plt.hist(ak)
-plt.show()
-pp = sc.stats.poisson.rvs(U[:,1], 15)
-plt.hist(pp)
-plt.show()
-#ptime = sc.stats.
+ak = sc.stats.poisson.ppf(U[:, 0], 5)
+pp = sc.stats.poisson.ppf(U[:, 1], 15)
+ptime = sc.stats.norm.ppf(U[:, 2], 120, 30)
 
 # 1e) Replicate the final plot showcasing the correlations between the variables.
 
