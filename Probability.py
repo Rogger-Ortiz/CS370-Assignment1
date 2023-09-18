@@ -4,20 +4,11 @@ from scipy import stats
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Helper functions #
-
-
-def halfround(num):
-    return round(num*2)/2
-
 ### Problem 1 (80 points) ###
 
 
 # 1a) Write the code for generating the gs variable. This is the simplest random variable of the problem and can be generated independent of the others.
-gs = []
-for i in range(0, 10000):
-    num = np.random.normal(loc=7.25, scale=0.875)
-    gs.append(halfround(num))
+gs = np.random.normal(loc=7.25, scale=0.875, size=10000)
 
 # 1b) We have three variables, ak, pp, and ptime. Write the code for generating these variables from Multivariate Gaussian distribution and replicate the associated plots.
 U = np.array([[1.0, 0.6, -0.9],
@@ -60,9 +51,15 @@ axis[2, 2].set_title("ptime")
 plt.show()
 
 # 1d) Perform the inverse transform sampling.
-ak = sc.stats.poisson.ppf(U[:, 0], 5)
-pp = sc.stats.poisson.ppf(U[:, 1], 15)
-ptime = sc.stats.norm.ppf(U[:, 2], 120, 30)
+ak = sc.stats.poisson.ppf(APT[:, 0].tolist(), 5)
+plt.hist(ak)
+plt.show()
+pp = sc.stats.poisson.ppf(APT[:, 1].tolist(), 15)
+plt.hist(pp)
+plt.show()
+ptime = sc.stats.norm.ppf(APT[:, 2].tolist())
+plt.hist(ptime)
+plt.show()
 
 # 1e) Replicate the final plot showcasing the correlations between the variables.
 
