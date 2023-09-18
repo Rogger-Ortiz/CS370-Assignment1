@@ -52,17 +52,32 @@ plt.show()
 
 # 1d) Perform the inverse transform sampling.
 ak = sc.stats.poisson.ppf(APT[:, 0].tolist(), 5)
-plt.hist(ak)
-plt.show()
 pp = sc.stats.poisson.ppf(APT[:, 1].tolist(), 15)
-plt.hist(pp)
-plt.show()
 ptime = sc.stats.norm.ppf(APT[:, 2].tolist())
-plt.hist(ptime)
-plt.show()
 
 # 1e) Replicate the final plot showcasing the correlations between the variables.
+figure, axis = plt.subplots(4, 4)
+axis[0, 0].set_title("ak")
+axis[1, 0].scatter(ak, pp)
+axis[2, 0].scatter(ak, ptime)
+axis[3, 0].scatter(ak, gs)
 
+axis[0, 1].scatter(pp, ak)
+axis[1, 1].set_title("pp")
+axis[2, 1].scatter(pp, ptime)
+axis[3, 1].scatter(pp, gs)
+
+axis[0, 2].scatter(ptime, ak)
+axis[1, 2].scatter(ptime, pp)
+axis[2, 2].set_title("ptime")
+axis[3, 2].scatter(ptime, gs)
+
+axis[0, 3].scatter(gs, ak)
+axis[1, 3].scatter(gs, pp)
+axis[2, 3].scatter(gs, ptime)
+axis[3, 3].set_title("gs")
+
+plt.show()
 
 ### Problem 2 (20 Points) ###
 
